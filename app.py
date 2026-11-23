@@ -102,7 +102,6 @@ if prompt:
             try:
                 reply = ask_gemini(st.session_state.messages)
             except Exception as e:
-                st.error(f"Debug: {type(e).__name__}: {str(e)[:300]}")
                 reply = f"Sorry, I'm having trouble right now. Please call us on {PHONE}."
         st.write(reply)
     st.session_state.messages.append({"role": "assistant", "content": reply})
