@@ -101,7 +101,8 @@ if prompt:
         with st.spinner("Thinking..."):
             try:
                 reply = ask_gemini(st.session_state.messages)
-            except Exception:
-                reply = f"Sorry, I'm having trouble right now. Please call us on {PHONE}."
+            except Exception as e:
+    st.error(f"Debug: {e}")
+    reply = f"Sorry, I'm having trouble right now. Please call us on {PHONE}."
         st.write(reply)
     st.session_state.messages.append({"role": "assistant", "content": reply})
